@@ -1,14 +1,20 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { IRestaurant } from "../../interfaces/IRestaurant";
+import { useNavigation } from "@react-navigation/native";
 
 type RestaurantItemProps = {
   restaurant: IRestaurant;
 };
 
 export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
+  const navigation: any = useNavigation();
+
+  function handlePress() {
+    navigation.navigate("RestaurantDetails", { restaurant });
+  }
+
   return (
-    <View style={styles.restaurantgeContainer}>
+    <Pressable onPress={handlePress} style={styles.restaurantgeContainer}>
       <Image
         style={styles.image}
         source={{
@@ -16,11 +22,13 @@ export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
         }}
       />
 
-      <View style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <View>
           <Text style={styles.title}>{restaurant.name}</Text>
           <Text style={styles.subTitle}>
@@ -30,7 +38,7 @@ export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
         </View>
         <Text style={styles.rating}>{restaurant.rating.toFixed(1)}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -60,6 +68,6 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
     width: 50,
     height: 30,
-    textAlign: "center"
+    textAlign: "center",
   },
 });

@@ -1,15 +1,18 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { DishList } from "../../components";
+import { useNavigation } from "@react-navigation/native";
 
 export const RestaurantDetails = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.page}>
       <DishList />
 
-      <View style={styles.iconContainer}>
+      <Pressable onPress={() => navigation.goBack()} style={styles.iconContainer}>
         <Ionicons name="arrow-back-circle" size={45} color="white" />
-      </View>
+      </Pressable>
     </View>
   );
 };

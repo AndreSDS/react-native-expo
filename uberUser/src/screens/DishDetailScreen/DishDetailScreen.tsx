@@ -1,12 +1,20 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
-import datarestaurants from "../../assets/data/restaurants.json";
-
-const dish = datarestaurants[0].dishes[0];
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { IDish } from "../../interfaces/IDish";
 
 export const DishDetailScreen = () => {
-  const quantity = useRef(1);
+  const navigation: any = useNavigation();
+  const route = useRoute();
+  const { dish } = route.params as { dish: IDish };
+
   const [quantityState, setQuantityState] = useState(1);
 
   function handleAdd() {
@@ -20,6 +28,10 @@ export const DishDetailScreen = () => {
   const getTotal = () => {
     return (quantityState * dish.price).toFixed(2);
   };
+
+  function addToBasket() {
+    navigation.navigate("Basket", { dish, quantity: quantityState });
+  }
 
   return (
     <View style={styles.page}>
@@ -47,11 +59,11 @@ export const DishDetailScreen = () => {
           />
         </View>
 
-        <View style={styles.addButton}>
+        <Pressable onPress={addToBasket} style={styles.addButton}>
           <Text style={styles.addText}>
             Add {quantityState} {quantityState > 1 ? "items" : "item"}
           </Text>
-        </View>
+        </Pressable>
       </View>
     </View>
   );

@@ -1,13 +1,20 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { IOrder } from "../../interfaces/IOrder";
+import { useNavigation } from "@react-navigation/native";
 
 type OrderListItemProps = {
   order: IOrder;
 };
 
 export const OrderListItem = ({ order }: OrderListItemProps) => {
+  const navigation: any = useNavigation();
+
+  function navigateToOrderDetails() {
+    navigation.navigate("OrderDetails", { order });
+  }
+
   return (
-    <View style={styles.container}>
+    <Pressable onPress={navigateToOrderDetails} style={styles.container}>
       <Image source={{ uri: order.Restaurant.image }} style={styles.image} />
 
       <View style={styles.rightContainer}>
@@ -15,7 +22,7 @@ export const OrderListItem = ({ order }: OrderListItemProps) => {
         <Text style={styles.items}>3 items &#8226; $38.45</Text>
         <Text style={styles.status}>2 days ago &#8226; {order.status}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

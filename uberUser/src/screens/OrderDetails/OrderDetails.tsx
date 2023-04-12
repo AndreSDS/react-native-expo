@@ -1,12 +1,16 @@
+import { useMemo } from "react";
 import { View, Image, StyleSheet, Text, FlatList } from "react-native";
-import orders from "../../assets/data/orders.json";
 import restaurants from "../../assets/data/restaurants.json";
 import { BasketDishItem } from "../Basket/BasketDishItem";
+import { useRoute } from "@react-navigation/native";
+import { IOrder } from "../../interfaces/IOrder";
+import { IRestaurant } from "../../interfaces/IRestaurant";
 
-const order = orders[0];
-const restaurant = restaurants[0];
+type OrderDetailsHeaderProps = {
+  order: IOrder;
+};
 
-export const OrderDetailsHeader = () => {
+export const OrderDetailsHeader = ({ order }: OrderDetailsHeaderProps) => {
   return (
     <>
       <Image
@@ -37,13 +41,20 @@ export const OrderDetailsHeader = () => {
 };
 
 export const OrderDetails = () => {
+  const route = useRoute();
+  const { order } = route.params as { order: IOrder };
+
+  const restaurant = restaurants.find(
+    (restaurant: IRestaurant) => restaurant.id === order.Restaurant.id
+  ) as IRestaurant;
+
   return (
     <View style={styles.page}>
       <FlatList
         data={restaurant.dishes}
         renderItem={({ item }) => <BasketDishItem dishItem={item} />}
         keyExtractor={(item) => item.name}
-        ListHeaderComponent={<OrderDetailsHeader />}
+        ListHeaderComponent={<OrderDetailsHeader order={order} />}
         showsVerticalScrollIndicator={false}
       />
     </View>

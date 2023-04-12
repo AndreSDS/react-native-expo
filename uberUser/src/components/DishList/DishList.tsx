@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View, Image, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import { DishItem } from "../DishItem/DishItem";
-import { IRestaurant } from "../../interfaces/IRestaurant";
 import { IDish } from "../../interfaces/IDish";
 import { Header } from "../../screens/RestaurantDetails/Header";
-import dataRestaurant from "../../assets/data/restaurants.json";
-const restaurant: IRestaurant = dataRestaurant[0];
+import { useRoute } from "@react-navigation/native";
+import { IRestaurant } from "../../interfaces/IRestaurant";
 
 export const DishList = () => {
+  const route = useRoute();
+
+  const { restaurant } = route.params as { restaurant: IRestaurant };
+
   return (
     <FlatList
       data={restaurant.dishes}
