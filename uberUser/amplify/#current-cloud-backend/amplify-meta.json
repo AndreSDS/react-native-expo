@@ -1,0 +1,60 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ubereatsclone-staging-175051-authRole",
+      "UnauthRoleArn": "arn:aws:iam::685135446174:role/amplify-ubereatsclone-staging-175051-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::685135446174:role/amplify-ubereatsclone-staging-175051-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-ubereatsclone-staging-175051-deployment",
+      "UnauthRoleName": "amplify-ubereatsclone-staging-175051-unauthRole",
+      "StackName": "amplify-ubereatsclone-staging-175051",
+      "StackId": "arn:aws:cloudformation:sa-east-1:685135446174:stack/amplify-ubereatsclone-staging-175051/bb1ddb40-da23-11ed-b0f1-0663a65b74ec",
+      "AmplifyAppId": "d20xuwcu1xthg5"
+    }
+  },
+  "auth": {
+    "ubereatsclone": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS"
+          ]
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ubereatsclone-staging-175051-deployment/amplify-cfn-templates/auth/ubereatsclone-cloudformation-template.json",
+        "logicalId": "authubereatsclone"
+      },
+      "lastPushTimeStamp": "2023-04-13T18:00:43.982Z",
+      "output": {
+        "UserPoolId": "sa-east-1_niMRJTKdH",
+        "AppClientIDWeb": "3flb4s22sd8p07f8nkv89aiduo",
+        "AppClientID": "1boni84kkb3sv1qt970m8voppt",
+        "IdentityPoolId": "sa-east-1:6cbf70e9-545b-487d-a38a-a4d60a15a837",
+        "UserPoolArn": "arn:aws:cognito-idp:sa-east-1:685135446174:userpool/sa-east-1_niMRJTKdH",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "ubereatsclone"
+      },
+      "lastPushDirHash": "eQoycQbM0IMW9b9jwQPuDGaglKI="
+    }
+  }
+}
