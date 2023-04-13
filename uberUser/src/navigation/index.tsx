@@ -24,8 +24,6 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen name="DishDetailScreen" component={DishDetailScreen} />
 
       <HomeStack.Screen name="Basket" component={Basket} />
-
-      <HomeStack.Screen name="Orders" component={OrdersScreen} />
     </HomeStack.Navigator>
   );
 };
