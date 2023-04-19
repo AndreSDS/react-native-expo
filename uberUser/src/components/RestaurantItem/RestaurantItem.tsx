@@ -6,11 +6,13 @@ type RestaurantItemProps = {
   restaurant: IRestaurant;
 };
 
+const DEFAULT_IMAGE = "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+
 export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
   const navigation: any = useNavigation();
 
   function handlePress() {
-    navigation.navigate("RestaurantDetails", { restaurant });
+    navigation.navigate("RestaurantDetails", { id: restaurant.id });
   }
 
   return (
@@ -18,7 +20,7 @@ export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
       <Image
         style={styles.image}
         source={{
-          uri: restaurant.image,
+          uri: restaurant.image ? restaurant.image : DEFAULT_IMAGE,
         }}
       />
 
@@ -32,8 +34,8 @@ export const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
         <View>
           <Text style={styles.title}>{restaurant.name}</Text>
           <Text style={styles.subTitle}>
-            ${restaurant.deliveryFee} {restaurant.minDeliveryTime}-
-            {restaurant.maxDeliveryTime} minutes{" "}
+            $ {restaurant.deliveryFee.toFixed(1)} &#8226; {restaurant.minDeliveryTime}-
+            {restaurant.maxDeliveryTime} minutes
           </Text>
         </View>
         <Text style={styles.rating}>{restaurant.rating.toFixed(1)}</Text>

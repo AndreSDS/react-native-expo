@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { IDish } from "../../interfaces/IDish";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { IRestaurant } from "../../interfaces/IRestaurant";
+import { useNavigation } from "@react-navigation/native";
 
 type DishItemProps = {
   dish: IDish;

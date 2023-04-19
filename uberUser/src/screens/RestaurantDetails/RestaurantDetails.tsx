@@ -10,7 +10,10 @@ export const RestaurantDetails = () => {
     <View style={styles.page}>
       <DishList />
 
-      <Pressable onPress={() => navigation.goBack()} style={styles.iconContainer}>
+      <Pressable
+        onPress={() => navigation.goBack()}
+        style={styles.iconContainer}
+      >
         <Ionicons name="arrow-back-circle" size={45} color="white" />
       </Pressable>
     </View>

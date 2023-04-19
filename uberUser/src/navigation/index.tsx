@@ -9,6 +9,7 @@ import {
   Basket,
   OrdersScreen,
   OrderDetails,
+  Profile,
 } from "../screens";
 
 const HomeStack = createNativeStackNavigator();
@@ -73,7 +74,7 @@ const HomeTabs = () => {
 
       <Tab.Screen
         name="Profile"
-        component={Basket}
+        component={Profile}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
