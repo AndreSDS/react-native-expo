@@ -2,11 +2,23 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
+const OrderStatus = {
+  "NEW": "NEW",
+  "COOKING": "COOKING",
+  "READY_FOR_PICKUP": "READY_FOR_PICKUP",
+  "PICKED_UP": "PICKED_UP",
+  "COMPLETED": "COMPLETED"
+};
 
-
-const { Dish, Restaurant } = initSchema(schema);
+const { Basket, OrderDish, Order, BasketDish, User, Dish, Restaurant } = initSchema(schema);
 
 export {
+  Basket,
+  OrderDish,
+  Order,
+  BasketDish,
+  User,
   Dish,
-  Restaurant
+  Restaurant,
+  OrderStatus
 };

@@ -12,6 +12,38 @@
       "AmplifyAppId": "d20xuwcu1xthg5"
     }
   },
+  "api": {
+    "ubereatsclone": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "6ea3b2ufjvc4pjl73yzk4hdsgi",
+        "GraphQLAPIEndpointOutput": "https://am25skjljvd5honzvwxug3apae.appsync-api.sa-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-vfewc36edjbajnqz7p55mdvm6m"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-04-22T16:05:32.046Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ubereatsclone-staging-175051-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiubereatsclone"
+      },
+      "lastPushDirHash": "9Nj01p7YyCwvwDtXVTOVZNx/MXo="
+    }
+  },
   "auth": {
     "ubereatsclone": {
       "customAuth": false,
@@ -49,43 +81,11 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "ubereatsclone"
       },
-      "lastPushTimeStamp": "2023-04-19T18:48:38.866Z",
+      "lastPushTimeStamp": "2023-04-22T16:05:32.051Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-ubereatsclone-staging-175051-deployment/amplify-cfn-templates/auth/ubereatsclone-cloudformation-template.json",
         "logicalId": "authubereatsclone"
       }
-    }
-  },
-  "api": {
-    "ubereatsclone": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            }
-          },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ]
-        },
-        "GraphQLAPIIdOutput": "6ea3b2ufjvc4pjl73yzk4hdsgi",
-        "GraphQLAPIEndpointOutput": "https://am25skjljvd5honzvwxug3apae.appsync-api.sa-east-1.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-vfewc36edjbajnqz7p55mdvm6m"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-ubereatsclone-staging-175051-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "logicalId": "apiubereatsclone"
-      },
-      "lastPushTimeStamp": "2023-04-19T18:48:38.868Z",
-      "lastPushDirHash": "GOKqosSN8uJwWqtMghL+obHFB+w="
     }
   }
 }

@@ -31,7 +31,9 @@ export const DishList = () => {
   }
 
   useEffect(() => {
-    fetchRestaurant();
+    if (id) {
+      fetchRestaurant();
+    }
   }, []);
 
   if (!restaurantDetails.id) {

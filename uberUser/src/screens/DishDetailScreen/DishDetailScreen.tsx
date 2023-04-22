@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
   Text,
   TouchableOpacity,
   Pressable,
+  ActivityIndicator,
 } from "react-native";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { IDish } from "../../interfaces/IDish";
+import { DataStore } from "aws-amplify";
+import { Dish } from "../../models";
 
 export const DishDetailScreen = () => {
   const navigation: any = useNavigation();
   const route = useRoute();
-  const { dish } = route.params as { dish: IDish };
-
+  const { id } = route.params as { id: string };
+  const [dish, setDish] = useState<Dish>({} as Dish);
   const [quantityState, setQuantityState] = useState(1);
+
+  async function fetchDish() {
+    const [resultDish] = await Promise.all([
+      DataStore.query(Dish, id) as Promise<Dish>,
+    ]);
+
+    setDish(resultDish);
+  }
 
   function handleAdd() {
     setQuantityState(quantityState + 1);
@@ -31,6 +41,26 @@ export const DishDetailScreen = () => {
 
   function addToBasket() {
     navigation.navigate("Basket", { dish, quantity: quantityState });
+  }
+
+  useEffect(() => {
+    if (id) {
+      fetchDish();
+    }
+  }, []);
+
+  if (!dish.id) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color="lightblue" />
+      </View>
+    );
   }
 
   return (

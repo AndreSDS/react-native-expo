@@ -11,7 +11,7 @@ export const DishItem = ({ dish }: DishItemProps) => {
 
   function handlePress() {
     navigation.navigate("DishDetailScreen", {
-      dish,
+      id: dish.id,
     });
   }
 
